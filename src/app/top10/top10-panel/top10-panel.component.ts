@@ -15,8 +15,8 @@ import { Top10ItemComponent } from '../top10-item/top10-item.component';
     CategorySelectFieldComponent,
     CommonModule,
   ],
-  templateUrl: './top10panel.component.html',
-  styleUrl: './top10panel.component.sass',
+  templateUrl: './top10-panel.component.html',
+  styleUrl: './top10-panel.component.sass',
 })
 export class Top10PanelComponent implements OnInit {
   constructor(events: EventService, private top10Service: Top10Service) {

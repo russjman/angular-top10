@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Top10PanelComponent } from './top10Panel.component';
+import { Top10PanelComponent } from './top10-panel.component';
 
 describe('Top10Component', () => {
   let component: Top10PanelComponent;
