@@ -1,0 +1,14 @@
+<select
+  id="category"
+  name="category"
+  class="form-control"
+  [(ngModel)]="category"
+  (ngModelChange)="onCategoryChange($event)"
+  required
+  placeholder="Select a category"
+>
+  <option value="">All</option>
+  <option *ngFor="let category of categories" [value]="category">
+    {{ category }}
+  </option>
+</select>

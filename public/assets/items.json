@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "name": "Interstellar",
+    "category": "movies"
+  },
+  {
+    "id": "2",
+    "name": "The Fountain",
+    "category": "movies"
+  },
+  {
+    "id": "3",
+    "name": "Parasite",
+    "category": "movies"
+  },
+  {
+    "id": "4",
+    "name": "Rick and Morty",
+    "category": "tv"
+  }
+]
