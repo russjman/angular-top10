@@ -25,8 +25,14 @@
       />
     </div>
 
-    <div class="col-md">
-      <button (click)="$event.preventDefault(); addItem()" type="submit">
+    <div class="col-md-2 text-right">
+      <button
+        (click)="$event.preventDefault(); addItem()"
+        class="btn btn-success"
+        [disabled]="category === '' || newItemName === ''"
+        type="submit"
+      >
+        <i class="bi bi-plus-circle"></i>
         Add {{ category }}
       </button>
     </div>

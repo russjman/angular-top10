@@ -1,14 +1,28 @@
-<select
-  id="category"
-  name="category"
-  class="form-control"
-  [(ngModel)]="category"
-  (ngModelChange)="onCategoryChange($event)"
-  required
-  placeholder="Select a category"
->
-  <option value="">All</option>
-  <option *ngFor="let category of categories" [value]="category">
-    {{ category }}
-  </option>
-</select>
+<div class="row align-items-center">
+  <div class="col-md-8">
+    <select
+      id="category"
+      name="category"
+      class="form-select"
+      [(ngModel)]="category"
+      (ngModelChange)="onCategoryChange($event)"
+      required
+      placeholder="Select a category"
+    >
+      <option value="">All</option>
+      <option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </option>
+    </select>
+  </div>
+  <!-- <div class="col-md-2 text-center">
+    <button class="btn btn-success" (click)="onAddCategory()">
+      <i class="bi bi-plus-circle"></i> Add
+    </button>
+  </div> -->
+  <div class="col-md-2 text-center">
+    <button class="btn btn-secondary" (click)="onClearCategory()">
+      <i class="bi bi-x-circle"></i> Clear
+    </button>
+  </div>
+</div>

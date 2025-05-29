@@ -1,7 +1,7 @@
 <div>
-  {{ item.name }} - {{ item.category }}
-
-  <button class="btn btn-danger" (click)="deleteItem()" type="button">
-    Delete
-  </button>
+  <a (click)="deleteItem()">
+    <i class="bi bi-plus-circle color-green"></i>
+    {{ item.name }}
+  </a>
+  <span class="badge text-bg-secondary">{{ item.category }}</span>
 </div>

@@ -6,6 +6,7 @@ import { CategorySelectFieldComponent } from '../category-select-field/category-
 import EventService from '../../../shared/EventService';
 import { Top10Service } from '../top10.service';
 import { Top10ItemComponent } from '../top10-item/top10-item.component';
+import { Top10ListComponent } from '../top10-list/top10-list.component';
 
 @Component({
   selector: 'top10Panel',
@@ -14,6 +15,7 @@ import { Top10ItemComponent } from '../top10-item/top10-item.component';
     AddItemFormComponent,
     CategorySelectFieldComponent,
     CommonModule,
+    Top10ListComponent,
   ],
   templateUrl: './top10-panel.component.html',
   styleUrl: './top10-panel.component.sass',
