@@ -27,4 +27,15 @@ export class CategorySelectFieldComponent implements OnInit {
     this.category = value;
     this.categoryChange.emit(this.category);
   }
+
+  onAddCategory() {
+    console.log('Add category clicked');
+  }
+
+  onClearCategory() {
+    console.log('Clear category clicked');
+    // Clear the selected category
+    this.category = '';
+    this.categoryChange.emit(this.category);
+  }
 }

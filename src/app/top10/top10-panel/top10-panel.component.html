@@ -1,28 +1,23 @@
 <main class="container">
-  <h1>top10 works!</h1>
-
+  <category-select-field
+    [(category)]="this.category"
+    (categoryChange)="this.filterItems($event)"
+  ></category-select-field>
   <add-item-form
     [category]="this.category"
     (addNewItem)="this.addItem($event)"
   ></add-item-form>
 
   <div class="row">
-    <div class="col-md">
-      <category-select-field
-        [(category)]="this.category"
-        (categoryChange)="this.filterItems($event)"
-      ></category-select-field>
+    <div class="col-md-4">
       <ul>
         <li *ngFor="let item of filteredItems">
           <top10-item [item]="item" />
         </li>
       </ul>
     </div>
-    <div class="col-md-4">
-      <h3>Your Top 10 TV Shows</h3>
-      <!-- <ul>
-        <li *ngFor="let show of shows">{{ show.name }} - {{ show.id }}</li>
-      </ul> -->
+    <div class="col-md-8">
+      <top10-list [category]="this.category"></top10-list>
     </div>
     <!--
     <div class="col-md-4">
