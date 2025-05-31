@@ -3,28 +3,32 @@
     [(category)]="this.category"
     (categoryChange)="this.filterItems($event)"
   ></category-select-field>
-  <add-item-form
-    [category]="this.category"
-    (addNewItem)="this.addItem($event)"
-  ></add-item-form>
 
-  <div class="row">
+  <div class="row p-4">
+    <div class="col-md-8">
+      <top10-list [category]="this.category"></top10-list>
+    </div>
     <div class="col-md-4">
+      <div class="d-flex flex-row">
+        <h1 class="display-3">{{ category }}</h1>
+        <a
+          (click)="$event.preventDefault(); openAddItemForm()"
+          class="ms-2"
+          type="submit"
+        >
+          <i class="bi bi-plus-circle"></i>
+        </a>
+      </div>
+
       <ul>
         <li *ngFor="let item of filteredItems">
           <top10-item [item]="item" />
         </li>
       </ul>
+      <add-item-form
+        [category]="this.category"
+        (addNewItem)="this.addItem($event)"
+      ></add-item-form>
     </div>
-    <div class="col-md-8">
-      <top10-list [category]="this.category"></top10-list>
-    </div>
-    <!--
-    <div class="col-md-4">
-      <h3>Top 10 Books</h3>
-      <ul>
-        <li *ngFor="let book of books">{{ book.name }} - {{ book.id }}</li>
-      </ul>
-    </div> -->
   </div>
 </main>

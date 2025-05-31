@@ -27,7 +27,7 @@ export class Top10Service {
 
     options.headers = options.headers.set(
       'Authentication',
-      'Bearer token balabla'
+      'Bearer token blah blah blah'
     );
 
     // Example of setting parameters in the request

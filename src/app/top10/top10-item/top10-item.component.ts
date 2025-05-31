@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Top10Item } from '../top10-panel/top10Item';
 import EventService from '../../../shared/EventService';
 
@@ -10,12 +10,12 @@ import EventService from '../../../shared/EventService';
 })
 export class Top10ItemComponent {
   @Input() item: Top10Item = {} as Top10Item;
+  @Output() addListItem = new EventEmitter<Top10Item>();
 
-  constructor(private events: EventService) {
-    console.log('Top10ItemComponent constructor', this.item);
-  }
+  constructor(private events: EventService) {}
 
-  deleteItem() {
-    this.events.emit('deleteItem', this.item);
+  addItem(item: Top10Item) {
+    console.log('Adding item: ', item);
+    this.events.emit('addListItem', item);
   }
 }

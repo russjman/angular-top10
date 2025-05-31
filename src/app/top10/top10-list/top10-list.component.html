@@ -1,3 +1,24 @@
-<div>
-  <h1>Top 10 {{ category }}</h1>
+<div class="row">
+  <div class="col-md-8">
+    <h1 class="display-3">Top 10 {{ category }}</h1>
+  </div>
+  <div class="col-md-4 text-end">
+    <button class="btn btn-sm btn-success me-2" (click)="saveList()">
+      <i class="bi bi-save"></i>
+    </button>
+    <button class="btn btn-sm btn-secondary" (click)="clearList()">
+      <i class="bi bi-arrow-clockwise"></i>
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <a (click)="moveItemUp({})">
+      <i class="bi bi-arrow-up-circle"></i>
+    </a>
+    <a (click)="moveItemDown({})">
+      <i class="bi bi-arrow-down-circle"></i>
+    </a>
+    #1
+  </div>
 </div>

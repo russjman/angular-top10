@@ -7,6 +7,7 @@ import EventService from '../../../shared/EventService';
 import { Top10Service } from '../top10.service';
 import { Top10ItemComponent } from '../top10-item/top10-item.component';
 import { Top10ListComponent } from '../top10-list/top10-list.component';
+import { isArrayLike } from 'rxjs/internal/util/isArrayLike';
 
 @Component({
   selector: 'top10Panel',
@@ -25,6 +26,15 @@ export class Top10PanelComponent implements OnInit {
     events.listen('deleteItem', (item: Top10Item) => {
       console.log('deleteItem: ', item);
     });
+    events.listen('addListItem', (item: Top10Item) => {
+      // this.top10Service.addListItem(item).subscribe((data) => {
+      //   console.log('Item added: ', data);
+      // });
+      isArrayLike(this.top10Lists[this.category])
+        ? this.top10Lists[this.category].push(item)
+        : (this.top10Lists[this.category] = [item]);
+      console.log('Updated top10Lists: ', this.top10Lists);
+    });
   }
 
   ngOnInit(): void {
@@ -34,14 +44,14 @@ export class Top10PanelComponent implements OnInit {
       this.items = data as Top10Item[];
       this.filteredItems = data as Top10Item[];
     });
-    this.ranks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    this.category = '';
+    this.category = 'movies';
   }
 
   ranks: number[] = [];
   items: Top10Item[] = [];
   category: any;
   filteredItems: Top10Item[] = [];
+  top10Lists: { [key: string]: Top10Item[] } = {};
 
   addItem = (item: Top10Item) => {
     console.log('filterItems: ', item);
@@ -60,5 +70,9 @@ export class Top10PanelComponent implements OnInit {
     } else {
       this.filteredItems = this.items;
     }
+  };
+
+  openAddItemForm = () => {
+    console.log('openAddItemForm');
   };
 }

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Top10Service } from '../top10.service';
 
 @Component({
   selector: 'category-select-field',
@@ -12,14 +13,21 @@ export class CategorySelectFieldComponent implements OnInit {
   @Input() category: any;
   @Output() categoryChange = new EventEmitter<any>();
 
-  constructor() {}
+  categories: string[] = [];
+
+  constructor(private top10Service: Top10Service) {}
 
   ngOnInit(): void {
     // Initialize the selected category if not provided
     //  this.onCategoryChange(this.categories[0]);
+    this.top10Service.getCategories().subscribe((data) => {
+      console.log('categories: ', data);
+      this.categories = data as string[];
+      if (this.categories.length > 0 && !this.category) {
+        this.category = this.categories[0]; // Set default category if none is selected
+      }
+    });
   }
-
-  categories: string[] = ['movies', 'tv', 'music', 'books'];
 
   onCategoryChange(value: string) {
     console.log('Selected category: ', value);
