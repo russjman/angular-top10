@@ -11,14 +11,22 @@
     </button>
   </div>
 </div>
-<div class="row">
+<div *ngFor="let item of list; let i = index" class="row">
   <div class="col-md-2">
-    <a (click)="moveItemUp({})">
+    <a (click)="moveItemUp(item)">
       <i class="bi bi-arrow-up-circle"></i>
     </a>
-    <a (click)="moveItemDown({})">
+    <a (click)="moveItemDown(item)">
       <i class="bi bi-arrow-down-circle"></i>
     </a>
-    #1
+    <a (click)="deleteItem(i)">
+      <i class="bi bi-x-circle"></i>
+    </a>
+  </div>
+  <div class="col-md-1 text-center">
+    <h4 class="m-0">#{{ i + 1 }}</h4>
+  </div>
+  <div class="col-md-8">
+    {{ item.name }}
   </div>
 </div>
