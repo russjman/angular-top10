@@ -6,7 +6,10 @@
 
   <div class="row p-4">
     <div class="col-md-8">
-      <top10-list [category]="this.category"></top10-list>
+      <top10-list
+        [category]="this.category"
+        [list]="this.top10Lists[this.category]"
+      ></top10-list>
     </div>
     <div class="col-md-4">
       <div class="d-flex flex-row">

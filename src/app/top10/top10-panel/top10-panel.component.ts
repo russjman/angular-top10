@@ -25,14 +25,30 @@ export class Top10PanelComponent implements OnInit {
   constructor(events: EventService, private top10Service: Top10Service) {
     events.listen('deleteItem', (item: Top10Item) => {
       console.log('deleteItem: ', item);
+      if (isArrayLike(this.top10Lists[this.category])) {
+        this.top10Lists[this.category] = this.top10Lists[this.category].filter(
+          (existingItem) => existingItem.id !== item.id
+        );
+        console.log('Item deleted: ', item);
+      } else {
+        console.log('No items to delete in category: ', this.category);
+      }
     });
     events.listen('addListItem', (item: Top10Item) => {
-      // this.top10Service.addListItem(item).subscribe((data) => {
-      //   console.log('Item added: ', data);
-      // });
-      isArrayLike(this.top10Lists[this.category])
-        ? this.top10Lists[this.category].push(item)
-        : (this.top10Lists[this.category] = [item]);
+      if (isArrayLike(this.top10Lists[this.category])) {
+        const exists = this.top10Lists[this.category].some(
+          (existingItem) => existingItem.id === item.id
+        );
+        if (!exists) {
+          this.top10Lists[this.category].push(item);
+          console.log('Item added: ', item);
+        } else {
+          console.log('Duplicate item not added: ', item);
+        }
+      } else {
+        this.top10Lists[this.category] = [item];
+        console.log('Item added to new category: ', item);
+      }
       console.log('Updated top10Lists: ', this.top10Lists);
     });
   }
